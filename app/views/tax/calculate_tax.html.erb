@@ -1,0 +1,125 @@
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="loginbackground box-background--white padding-top--64">
+        <div class="loginbackground-gridContainer">
+          <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+            <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+            </div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+            <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+            <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+            <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+            <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+            <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+            <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+            <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+          </div>
+          <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+            <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="box-root flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="" rel="dofollow">Tax Calculator</a></h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <form id="stripe-login">
+                <div id="tax-calulator">
+                  <div class="field padding-bottom--24">
+                    <input class="form-control" id="salary" placeholder="Your Monthly Salary" oninput="myFunction()">
+                  </div>
+                  <label>Monthly Income</label>
+                  <label id="monthly-salary">0</label>
+                  <br>
+                  <label>Monthly Tax</label>
+                  <label id="monthly-tax">0</label>
+                  <br>
+                  <label>Salary After Tax</label>
+                  <label id="salary-after-tax">0</label>
+                  <br>
+                  <label>Yearly Income</label>
+                  <label id="yearly-salary">0</label>
+                  <br>
+                  <label>Yearly Tax</label>
+                  <label id="yearly-tax">0</label>
+                  <br>
+                  <label>Yearly Income After Tax</label>
+                  <label id="yearly-income-after-tax">0</label>
+                  <br>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footer-link">
+            <br>
+            <div class="listing flex-flex center-center">
+              <span><a href="#">This is the Latest Income Tax Calculator as per 2022-2023 budget presented by PMLN government.</a></span>
+            </div>
+            <div class="listing flex-flex center-center">
+              <span><a href="#">Ⓒ Copyright 2022, Shehzar</a></span>
+            </div>
+            <div class="listing flex-flex center-center">
+              <span><a href="#">notifyshehzar@gmail.com</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+<script>
+function myFunction() {
+  var salary = document.getElementById("salary").value;
+  document.getElementById("monthly-salary").innerHTML = salary;
+  if (salary == 0) {document.getElementById("monthly-salary").innerHTML = 0}
+  document.getElementById("monthly-tax").innerHTML=calculate(salary);
+  document.getElementById("salary-after-tax").innerHTML=salary-document.getElementById("monthly-tax").innerHTML;
+  document.getElementById("yearly-salary").innerHTML=salary*12;
+  document.getElementById("yearly-tax").innerHTML=document.getElementById("monthly-tax").innerHTML*12;
+  document.getElementById("yearly-income-after-tax").innerHTML=document.getElementById("yearly-salary").innerHTML-document.getElementById("yearly-tax").innerHTML;
+}
+
+function calculate(value) {
+  var tax;
+  if (value < 50000) {
+    tax = 0;
+  }
+  else if (50000 < value && value <= 100000) {
+    tax = (value - 50000) * 0.000166;
+  }
+  else if (100000 < value && value <= 200000) {
+    tax = (value - 100000) * 0.07;
+  }
+  else if (200000 < value && value <= 300000) {
+    tax = ((value - 200000) * 0.125) + 7000;
+  }
+  else if (300000 < value && value <= 500000) {
+    tax = ((value - 300000) * 0.175) + 19500;
+  }
+  else if (200000 < value && value <= 1000000) {
+    tax = ((value - 500000) * 0.225) + 54500;
+  }
+  else if (value <= 1000000) {
+    tax = ((value - 100000) * 0.325) + 170000;
+  }
+  return Math.round(tax);
+}
+
+</script>
